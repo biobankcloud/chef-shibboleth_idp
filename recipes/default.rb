@@ -1,3 +1,7 @@
+#
+# Cookbook Name:: shibboleth-idp
+# Recipe:: default
+
 service "tomcat" do
   service_name "tomcat#{node["tomcat"]["base_version"]}"
   action :nothing
