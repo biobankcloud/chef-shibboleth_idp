@@ -46,7 +46,7 @@ end
 directory "#{node['shibboleth_idp']['home']}/lib/endorsed" do
   mode "0755"
 end
-directory "#{node['tomcat-all']['install_directory']}/endorsed/" do
+directory "#{node['tomcat-all']['install_directory']}/tomcat/endorsed/" do
   mode "0755"
   action :create
 end
