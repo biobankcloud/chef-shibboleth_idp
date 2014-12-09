@@ -110,10 +110,10 @@ template "#{node['shibboleth_idp']['home']}/conf/attribute-resolver.xml" do
   source "attribute-resolver.xml.erb"
   mode "0644"
   variables(
-    :attributes => node["shibboleth_idp"]["attributes"],
-    :ldapresolvers => node["shibboleth_idp"]["ldap_resolvers"],
-    :staticresolvers => node["shibboleth_idp"]["static_resolvers"],
-    :computedresolvers => node["shibboleth_idp"]["computed_resolvers"]
+    :attributes => node.default["shibboleth_idp"]["attributes"],
+    :ldapresolvers => node.default["shibboleth_idp"]["ldap_resolvers"],
+    :staticresolvers => node.default["shibboleth_idp"]["static_resolvers"],
+    :computedresolvers => node.default["shibboleth_idp"]["computed_resolvers"]
   )
   notifies :restart, "service[tomcat]"
 end
