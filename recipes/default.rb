@@ -48,6 +48,7 @@ directory "#{node['shibboleth_idp']['home']}/lib/endorsed" do
 end
 directory "#{node['tomcat-all']['install_directory']}/endorsed/" do
   mode "0755"
+  action :create
 end
 if File.directory?("#{node['shibboleth_idp']['home']}/lib/endorsed")
   Dir.foreach("#{node['shibboleth_idp']['home']}/lib/endorsed") do |item|
