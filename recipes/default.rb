@@ -3,7 +3,7 @@
 # Recipe:: default
 
 service "tomcat" do
-  service_name "tomcat#{node["tomcat"]["base_version"]}"
+  service_name "tomcat"
   action :nothing
 end
 
