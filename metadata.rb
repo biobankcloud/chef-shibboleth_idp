@@ -3,7 +3,7 @@ maintainer        "Elliot Kendall"
 maintainer_email  "elliot.kendall@ucsf.edu"
 license           "Apache 2.0"
 description       "Installs Shibboleth IdP"
-version           "0.1.9"
+version           "0.1.10"
 
 recipe "shibboleth_idp", "Installs Shibboleth IdP"
 
