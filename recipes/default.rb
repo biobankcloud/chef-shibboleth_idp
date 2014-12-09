@@ -54,7 +54,7 @@ if File.directory?("#{node['shibboleth_idp']['home']}/lib/endorsed")
   Dir.foreach("#{node['shibboleth_idp']['home']}/lib/endorsed") do |item|
     # Symlink only jar files
     next if not item =~ /.*\.jar$/
-    link "#{node['tomcat-all']['install_directory']}/endorsed/#{item}" do
+    link "#{node['tomcat-all']['install_directory']}/tomcat/endorsed/#{item}" do
       to "#{node['shibboleth_idp']['home']}/lib/endorsed/#{item}"
       notifies :restart, "service[tomcat]"
     end
