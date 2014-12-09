@@ -15,17 +15,17 @@ notifying_action :create do
     not_if "test -d #{node['shibboleth_idp']['installer_dir']}"
   end
 
-  cookbook_file "#{node['shibboleth_idp']['installer_dir']}/src/main/webapp/login.jsp" do
-    mode "0644"
-  end
+#  cookbook_file "#{node['shibboleth_idp']['installer_dir']}/src/main/webapp/login.jsp" do
+#    mode "0644"
+#  end
   
-  cookbook_file "#{node['shibboleth_idp']['installer_dir']}/src/main/webapp/login.css" do
-    mode "0644"
-  end
+#  cookbook_file "#{node['shibboleth_idp']['installer_dir']}/src/main/webapp/login.css" do
+#    mode "0644"
+#  end
     
-  cookbook_file "#{node['shibboleth_idp']['installer_dir']}/src/main/webapp/images/logo.jpg" do
-    mode "0644"
-  end
+#  cookbook_file "#{node['shibboleth_idp']['installer_dir']}/src/main/webapp/images/logo.jpg" do
+#    mode "0644"
+#  end
 
   directory "#{node['shibboleth_idp']['installer_dir']}/src/main/webapp/WEB-INF/lib" do
     action :create
