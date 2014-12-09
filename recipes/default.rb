@@ -46,11 +46,14 @@ end
 directory "#{node['shibboleth_idp']['home']}/lib/endorsed" do
   mode "0755"
 end
+directory "#{node['tomcat-all']['install_directory']}/endorsed/" do
+  mode "0755"
+end
 if File.directory?("#{node['shibboleth_idp']['home']}/lib/endorsed")
   Dir.foreach("#{node['shibboleth_idp']['home']}/lib/endorsed") do |item|
     # Symlink only jar files
     next if not item =~ /.*\.jar$/
-    link "#{node['tomcat-all']['endorsed_dir']}/#{item}" do
+    link "#{node['tomcat-all']['install_directory']}/endorsed/#{item}" do
       to "#{node['shibboleth_idp']['home']}/lib/endorsed/#{item}"
       notifies :restart, "service[tomcat]"
     end
@@ -58,7 +61,7 @@ if File.directory?("#{node['shibboleth_idp']['home']}/lib/endorsed")
 end
 
 # Load the IdP war file without having to move it into the webapps directory
-template "#{node['tomcat-all']['config_dir']}/Catalina/localhost/idp.xml" do
+template "#{node['tomcat-all']['install_directory']}/tomcat/conf/Catalina/localhost/idp.xml" do
   source "idp.xml.erb"
   mode 0644
   notifies :restart, "service[tomcat]"
@@ -206,7 +209,7 @@ end
 
 # Place a link to servet jar file in Shibboleth lib directory to allow for
 # use of aacli.sh
-Dir.glob("#{node['tomcat-all']['home']}/lib/*servlet*api*.jar").each do|f|
+Dir.glob("#{node['tomcat-all']['install_directory']}/tomcat/lib/*servlet*api*.jar").each do|f|
   link "#{node['shibboleth_idp']['home']}/lib/servlet-api.jar" do
     to "#{f}"
   end
