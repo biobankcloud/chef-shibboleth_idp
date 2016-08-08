@@ -1,4 +1,4 @@
-name              "shibboleth-idp"
+name              "shibboleth_idp"
 maintainer        "Elliot Kendall"
 maintainer_email  "elliot.kendall@ucsf.edu"
 license           "Apache 2.0"
